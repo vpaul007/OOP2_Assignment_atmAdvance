@@ -10,7 +10,7 @@ package atmAdvance1;
 
 	    // Consumer to display account details
 	    private final Consumer<Account> displayAccount = account -> 
-	        System.out.println("Account: " + account.accountNumber() + ", Balance: " + account.balance());
+	        System.out.println("Hello :" + account.holderName() +  "\nAccount: " + account.accountNumber() + ",\nBalance: " + account.balance());
 
 	    // Predicate to check sufficient balance
 	    private final BiPredicate<Account, BigDecimal> hasSufficientBalance = 
@@ -32,6 +32,13 @@ package atmAdvance1;
 	    public void addAccount(Account account) {
 	        accounts.put(account.accountNumber(), account);
 	    }
+
+	   //Create Default Account
+	   public Account createDefaultAccount() {
+
+	         return defaultAccountSupplier.get();
+
+		}
 
 	    public void processTransaction(String accNumber, Transaction transaction) {
 	        Account account = accounts.getOrDefault(accNumber, defaultAccountSupplier.get());
