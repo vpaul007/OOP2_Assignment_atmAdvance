@@ -1,5 +1,14 @@
 package atmAdvance1;
 
-public record BalanceCheck() implements Transaction {
+import java.time.LocalDateTime;
 
+public record BalanceCheck(LocalDateTime timestamp) implements Transaction {
+    public BalanceCheck(){
+        this(LocalDateTime.now());
+    }
+
+    @Override
+    public LocalDateTime timestamp() {
+        return LocalDateTime.now();
+    }
 }
